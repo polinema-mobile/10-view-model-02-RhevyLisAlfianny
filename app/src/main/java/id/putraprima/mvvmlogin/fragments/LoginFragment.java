@@ -27,26 +27,28 @@ import id.putraprima.mvvmlogin.viewmodels.LoginViewModelFactory;
 
 public class LoginFragment extends Fragment {
     private LoginViewModel loginViewModel;
+
     public LoginFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        FragmentLoginBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_splash, container, false);
+        //return inflater.inflate(R.layout.fragment_login, container, false);
+        FragmentLoginBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
         LoginViewModelFactory loginViewModelFactory = new LoginViewModelFactory(new LoginUser("rhevy@mail.com","123456"));
         loginViewModel =  new ViewModelProvider(this, loginViewModelFactory).get(LoginViewModel.class);
         binding.setLifecycleOwner(this);
         binding.setLoginViewModel(loginViewModel);
+
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 if (loginViewModel.isLogin()) {
-                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment);
+                    Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_homeFragment);
                 } else {
                     binding.editTextEmail.setError("Username harus sesuai");
                     binding.editTextPassword.setError("Password harus sesuai");

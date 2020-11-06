@@ -23,6 +23,7 @@ public class LoginViewModel extends ViewModel {
         this.loginMutableLiveData.setValue(this.loginUser);
     }
 
+
     public boolean isLogin(){
 
         if(email.equals(loginUser.getStrEmailAddress()) && password.equals(loginUser.getStrPassword())){
