@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="LoginViewModel"
+            type="id.putraprima.mvvmlogin.viewmodels.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +25,8 @@
             android:text="Login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -34,9 +37,11 @@
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
+            android:text="@={LoginViewModel.email}"
             app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="Autofill,HardcodedText" />
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -45,6 +50,7 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
+            android:text="@={LoginViewModel.password}"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
